@@ -159,9 +159,9 @@ function doScene2()
 
 
 
- function doScene3() //spiral animation
+ function doScene3() 
  {
-  ellipse(width/2, height/2, 1000, 1000);
+  
  }
 
  
