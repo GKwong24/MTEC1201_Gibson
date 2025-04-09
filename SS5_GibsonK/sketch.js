@@ -1,51 +1,60 @@
 /*
 ************ Gibson Kwong *************
-********* Face with for loops *********
+******** Snowman with for loops ********
 ** Click inside the face to change colors **
-* Face smiles when hovered with the mouse *
+**** Smiles when hovered with the mouse ****
 */
-let faceColor = 0;
+
+let faceColor;
 
 function setup() {
   createCanvas(400, 400);
   noStroke();
-  faceColor = color(255, 220, 180); // Default face color
+  faceColor = 255;
 }
 
 function draw() {
-  background(240, 200, 255); 
+  background(200, 230, 255);
 
-  //Instructions
+  // Instructions
   fill(0);
   textSize(16);
   textAlign(CENTER);
-  text("Click inside the face to change colors", width / 2, 40);
+  text("Click on the face to change colors", width / 2, 40);
 
   // Checks if mouse is inside the face
   let d = dist(mouseX, mouseY, 200, 200);
-  
-  // Color of face
-  fill(faceColor);
 
-  ellipse(200, 200, 200, 200); // Face
+  // Face
+  fill(faceColor);
+  ellipse(200, 200, 200, 200);
+
+  // Top Hat
+  fill(0);
+  rect(150, 60, 100, 50); // Top part
+  rect(130, 110, 140, 12); // Brim
 
   // Eyes
+  fill(0);
   for (let i = -1; i <= 1; i += 2) {
-    fill(0);
-    ellipse(200 + i * 40, 180, 20, 20);
+    ellipse(200 + i * 30, 180, 15, 15);
   }
 
-  // Smiles when hovering
+  // Nose
+  fill(255, 150, 0);
+  triangle(200, 200, 240, 205, 200, 210);
+
+  // Smile
+  fill(0);
   if (d < 100) {
+    // Smile when hovering
     for (let x = 160; x <= 240; x += 5) {
-      let y = 250 - 0.02 * (x - 200) * (x - 200); // Smile curve
-      fill(0);
-      ellipse(x, y, 5, 5);
+      let y = 260 - 0.02 * (x - 200) * (x - 200);
+      ellipse(x, y, 4, 4);
     }
   } else {
-    // Straight mouth when not hovering
-    fill(0);
-    rect(170, 240, 60, 5, 5);
+    // Neutral face
+    rect(170, 255, 60, 5, 5);
   }
 }
 
@@ -53,7 +62,6 @@ function draw() {
 function mousePressed() {
   let d = dist(mouseX, mouseY, 200, 200);
   if (d < 100) {
-    // Changes face color when clicked
-    faceColor = color(random(100, 255), random(100, 255), random(100, 255));
+    faceColor = color(random(220, 255), random(220, 255), random(240, 255));
   }
 }
