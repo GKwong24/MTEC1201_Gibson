@@ -201,7 +201,7 @@ function mousePressed() {
     let cy = 180 + i * 100;
     if (mouseX > width / 2 - 150 && mouseX < width / 2 + 150 &&
       mouseY > cy - 40 && mouseY < cy + 40) {
-      let value = dice[selectedDie];
+      let value = dice[selectedDie]; //get value of selected die 
       if (i === 0 && value >= 4) {
         enemyHP -= value;
         usedDice.push(selectedDie);
@@ -210,7 +210,7 @@ function mousePressed() {
         playerHP = min(30, playerHP + value);
         usedDice.push(selectedDie);
       }
-      selectedDie = -1;
+      selectedDie = -1;  //sets die to used
       return;      
     }
   }
@@ -250,7 +250,7 @@ function drawPregame() {
   textSize(40);
   fill(255);
   text("Dice Fight", width / 2, height / 2 - 100);
-  
+  //instructions
   textSize(20);
   fill(220);
   textSize(18);
